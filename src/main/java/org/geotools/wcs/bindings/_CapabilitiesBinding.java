@@ -1,8 +1,8 @@
 package org.geotools.wcs.bindings;
 
 
+import org.geotools.wcs.WCS;
 import org.geotools.xml.*;
-import org.geotools.xml.AbstractComplexBinding;
 
 import net.opengis.wcs11.Wcs111Factory;		
 
@@ -52,7 +52,7 @@ public class _CapabilitiesBinding extends AbstractComplexBinding {
 	 * @generated modifiable
 	 */	
 	public Class getType() {
-		return null;
+		return String.class;
 	}
 	
 	/**
@@ -64,8 +64,10 @@ public class _CapabilitiesBinding extends AbstractComplexBinding {
 	public Object parse(ElementInstance instance, Node node, Object value) 
 		throws Exception {
 		
+		return "Capabilities!";
+		
 		//TODO: implement and remove call to super
-		return super.parse(instance,node,value);
+//		return super.parse(instance,node,value);
 	}
 
 }

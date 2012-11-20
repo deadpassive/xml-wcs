@@ -1,4 +1,4 @@
-package org.geotools.wcs.bindings;
+package org.geotools.wcs;
 
 
 import java.util.Set;

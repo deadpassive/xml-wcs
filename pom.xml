@@ -21,46 +21,62 @@
 			<layout>legacy</layout>
 		</pluginRepository>
 	</pluginRepositories>
-	
+
 	<dependencies>
 		<dependency>
-           <groupId>org.geotools.xsd</groupId>
-           <artifactId>gt-xsd-core</artifactId>
-           <version>9-SNAPSHOT</version>
-        </dependency> 
-<!--         <dependency> -->
-<!--            <groupId>org.geotools.xsd</groupId> -->
-<!--            <artifactId>gt-xsd-wcs</artifactId> -->
-<!--            <version>9-SNAPSHOT</version> -->
-<!--         </dependency>  -->
-        <dependency>
-           <groupId>org.geotools.ogc</groupId>
-           <artifactId>net.opengis.wcs</artifactId>
-           <version>9-SNAPSHOT</version>
-        </dependency>
+			<groupId>org.geotools.xsd</groupId>
+			<artifactId>gt-xsd-core</artifactId>
+			<version>9-SNAPSHOT</version>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.geotools.xsd</groupId> -->
+		<!-- <artifactId>gt-xsd-wcs</artifactId> -->
+		<!-- <version>9-SNAPSHOT</version> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.geotools.xsd</groupId>
+			<artifactId>gt-xsd-ows</artifactId>
+			<version>9-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools.xsd</groupId>
+			<artifactId>gt-xsd-gml3</artifactId>
+			<version>9-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools.ogc</groupId>
+			<artifactId>net.opengis.wcs</artifactId>
+			<version>9-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
-		<plugin>
-                <groupId>org.geotools.maven</groupId>
-                <artifactId>xmlcodegen</artifactId>
-                <version>9-SNAPSHOT</version>
-                <configuration>
-                    <schemaLocation>wcsAll.xsd</schemaLocation>
-                    <schemaSourceDirectory>${basedir}/src/main/resources</schemaSourceDirectory>
-                    <destinationPackage>org.geotools.wcs.bindings</destinationPackage>
-                    <generateConfiguration>true</generateConfiguration>
-                    <generateBindingInterface>true</generateBindingInterface>
-                    <generateSchemaLocationResolver>true</generateSchemaLocationResolver>
-                    <bindingConstructorArguments>
-                        <bindingConstructorArgument>
-                            <name>factory</name>
-                            <type>net.opengis.wcs11.Wcs111Factory</type>
-                        </bindingConstructorArgument>
-                    </bindingConstructorArguments>
-                </configuration>
-            </plugin>
+			<plugin>
+				<groupId>org.geotools.maven</groupId>
+				<artifactId>xmlcodegen</artifactId>
+				<version>9-SNAPSHOT</version>
+				<configuration>
+					<schemaLocation>wcsAll.xsd</schemaLocation>
+					<schemaSourceDirectory>${basedir}/src/main/resources</schemaSourceDirectory>
+					<destinationPackage>org.geotools.wcs.bindings</destinationPackage>
+					<generateConfiguration>true</generateConfiguration>
+					<generateBindingInterface>true</generateBindingInterface>
+					<generateSchemaLocationResolver>true</generateSchemaLocationResolver>
+					<bindingConstructorArguments>
+						<bindingConstructorArgument>
+							<name>factory</name>
+							<type>net.opengis.wcs11.Wcs111Factory</type>
+						</bindingConstructorArgument>
+					</bindingConstructorArguments>
+				</configuration>
+			</plugin>
 			<plugin>
 				<inherited>true</inherited>
 				<groupId>org.apache.maven.plugins</groupId>

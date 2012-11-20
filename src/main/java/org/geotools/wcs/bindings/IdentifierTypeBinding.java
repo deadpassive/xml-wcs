@@ -1,8 +1,8 @@
 package org.geotools.wcs.bindings;
 
 
+import org.geotools.wcs.WCS;
 import org.geotools.xml.*;
-import org.geotools.xml.AbstractSimpleBinding;
 
 import net.opengis.wcs11.Wcs111Factory;		
 
