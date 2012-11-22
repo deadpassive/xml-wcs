@@ -7,6 +7,8 @@ import org.geotools.xml.*;
 import net.opengis.wcs11.Wcs111Factory;		
 
 import javax.xml.namespace.QName;
+import net.opengis.wcs11.ContentsType;
+import net.opengis.wcs11.impl.ContentsTypeImpl;
 
 /**
  * Binding object for the type http://www.opengis.net/wcs/1.1.1:_Contents.
@@ -68,7 +70,7 @@ public class _ContentsBinding extends AbstractComplexBinding {
 	 * @generated modifiable
 	 */	
 	public Class getType() {
-		return null;
+		return ContentsType.class;
 	}
 	
 	/**
@@ -79,9 +81,10 @@ public class _ContentsBinding extends AbstractComplexBinding {
 	 */	
 	public Object parse(ElementInstance instance, Node node, Object value) 
 		throws Exception {
+            
+            ContentsType contents = this.factory.createContentsType();
 		
-		//TODO: implement and remove call to super
-		return super.parse(instance,node,value);
+            return contents;
 	}
 
 }

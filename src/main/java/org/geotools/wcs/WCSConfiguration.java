@@ -3,6 +3,9 @@ package org.geotools.wcs;
 import java.util.Map;
 
 import javax.xml.namespace.QName;
+import net.opengis.wcs11.CapabilitiesType;
+import net.opengis.wcs11.ContentsType;
+import net.opengis.wcs11.CoverageSummaryType;
 
 import net.opengis.wcs11.Wcs111Factory;
 
@@ -46,111 +49,43 @@ import org.picocontainer.MutablePicoContainer;
 
 /**
  * Parser configuration for the http://www.opengis.net/wcs/1.1.1 schema.
- * 
+ *
  * @generated
  */
 public class WCSConfiguration extends Configuration {
 
-	/**
-	 * Creates a new configuration.
-	 * 
-	 * @generated
-	 */
-	public WCSConfiguration() {
-		super(WCS.getInstance());
+    /**
+     * Creates a new configuration.
+     *
+     * @generated
+     */
+    public WCSConfiguration() {
+        super(WCS.getInstance());
 
-		addDependency(new GMLConfiguration());
-		addDependency(new OWSConfiguration());
-	}
-
-	protected void configureContext(MutablePicoContainer context) {
-		context.registerComponentInstance(Wcs111Factory.eINSTANCE);
-	}
-	
-	@Override
-	protected void registerBindings(Map bindings) {
-		super.registerBindings(bindings);
-		
-		final EFactory wcsFactory = Wcs111Factory.eINSTANCE;
-		register(bindings, wcsFactory, WCS._Capabilities);
-	}
-	
-	private void register(Map bindings, EFactory factory, QName qname) {
-        bindings.put(qname, new ComplexEMFBinding(factory, qname));
+        addDependency(new GMLConfiguration());
+        addDependency(new OWSConfiguration());
     }
 
-//	/**
-//	 * Registers the bindings for the configuration.
-//	 * 
-//	 * @generated
-//	 */
-//	protected final void registerBindings(MutablePicoContainer container) {
-//		
-//		
-		
-		// Types
-//		container.registerComponentImplementation(WCS.AxisType,
-//				AxisTypeBinding.class);
-//		container.registerComponentImplementation(WCS.CoverageDescriptionType,
-//				CoverageDescriptionTypeBinding.class);
-//		container.registerComponentImplementation(WCS.CoverageDomainType,
-//				CoverageDomainTypeBinding.class);
-//		container.registerComponentImplementation(WCS.CoveragesType,
-//				CoveragesTypeBinding.class);
-//		container.registerComponentImplementation(WCS.CoverageSummaryType,
-//				CoverageSummaryTypeBinding.class);
-//		container.registerComponentImplementation(WCS.DomainSubsetType,
-//				DomainSubsetTypeBinding.class);
-//		container.registerComponentImplementation(WCS.FieldType,
-//				FieldTypeBinding.class);
-//		container.registerComponentImplementation(WCS.GridCrsType,
-//				GridCrsTypeBinding.class);
-//		container.registerComponentImplementation(WCS.IdentifierType,
-//				IdentifierTypeBinding.class);
-//		container.registerComponentImplementation(WCS.ImageCRSRefType,
-//				ImageCRSRefTypeBinding.class);
-//		container.registerComponentImplementation(
-//				WCS.InterpolationMethodBaseType,
-//				InterpolationMethodBaseTypeBinding.class);
-//		container.registerComponentImplementation(WCS.InterpolationMethodType,
-//				InterpolationMethodTypeBinding.class);
-//		container.registerComponentImplementation(WCS.OutputType,
-//				OutputTypeBinding.class);
-//		container.registerComponentImplementation(WCS.RangeSubsetType,
-//				RangeSubsetTypeBinding.class);
-//		container.registerComponentImplementation(WCS.RangeType,
-//				RangeTypeBinding.class);
-//		container.registerComponentImplementation(WCS.RequestBaseType,
-//				RequestBaseTypeBinding.class);
-//		container.registerComponentImplementation(WCS.SpatialDomainType,
-//				SpatialDomainTypeBinding.class);
-//		container.registerComponentImplementation(WCS.TimeDurationType,
-//				TimeDurationTypeBinding.class);
-//		container.registerComponentImplementation(WCS.TimePeriodType,
-//				TimePeriodTypeBinding.class);
-//		container.registerComponentImplementation(WCS.TimeSequenceType,
-//				TimeSequenceTypeBinding.class);
-//		container.registerComponentImplementation(WCS._AvailableKeys,
-//				_AvailableKeysBinding.class);
-//		container.registerComponentImplementation(WCS._AxisSubset,
-//				_AxisSubsetBinding.class);
-//		container.registerComponentImplementation(WCS._Capabilities,
-//				_CapabilitiesBinding.class);
-//		container.registerComponentImplementation(WCS._Contents,
-//				_ContentsBinding.class);
-//		container.registerComponentImplementation(WCS._CoverageDescriptions,
-//				_CoverageDescriptionsBinding.class);
-//		container.registerComponentImplementation(WCS._DescribeCoverage,
-//				_DescribeCoverageBinding.class);
-//		container.registerComponentImplementation(WCS._GetCapabilities,
-//				_GetCapabilitiesBinding.class);
-//		container.registerComponentImplementation(WCS._GetCoverage,
-//				_GetCoverageBinding.class);
-//		container.registerComponentImplementation(WCS._InterpolationMethods,
-//				_InterpolationMethodsBinding.class);
-//		container.registerComponentImplementation(
-//				WCS.RangeSubsetType_FieldSubset,
-//				RangeSubsetType_FieldSubsetBinding.class);
+    protected void configureContext(MutablePicoContainer context) {
+        context.registerComponentInstance(Wcs111Factory.eINSTANCE);
+    }
 
-//	}
+    protected void registerBindings(Map bindings) {
+        super.registerBindings(bindings);
+
+        final Wcs111Factory wcsFactory = Wcs111Factory.eINSTANCE;
+        register(bindings, wcsFactory, WCS.Capabilities, CapabilitiesType.class);
+        bindings.put(WCS.Contents, new _ContentsBinding(wcsFactory));
+//        register(bindings, wcsFactory, WCS.Contents, ContentsType.class);
+        register(bindings, wcsFactory, WCS.CoverageSummaryType);
+        
+    }
+
+    private void register(Map bindings, EFactory factory, QName qname) {
+        bindings.put(qname, new ComplexEMFBinding(factory, qname));
+    }
+    
+    private void register(Map bindings, EFactory factory, QName qname, Class clazz) {
+        bindings.put(qname, new ComplexEMFBinding(factory, qname, clazz));
+    }
 }

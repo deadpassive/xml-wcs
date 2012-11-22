@@ -1,99 +1,110 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>uk.ac.glam.wcs</groupId>
-	<artifactId>xml-wcs</artifactId>
-	<packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>uk.ac.glam.wcs</groupId>
+    <artifactId>xml-wcs</artifactId>
+    <packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>${project.artifactId}</name>
+    <name>${project.artifactId}</name>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>maven2-repository.dev.java.net</id>
-			<name>Java.net Mavenen 2 Repository</name>
-			<url>http://download.java.net/maven/2</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>maven-repository.dev.java.repositorynet</id>
-			<name>Java.net Maven 1 Repository (legacy)</name>
-			<url>http://download.java.net/maven/1</url>
-			<layout>legacy</layout>
-		</pluginRepository>
-	</pluginRepositories>
+<!--    <pluginRepositories>
+        <pluginRepository>
+            <id>maven2-repository.dev.java.net</id>
+            <name>Java.net Mavenen 2 Repository</name>
+            <url>http://download.java.net/maven/2</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>maven-repository.dev.java.repositorynet</id>
+            <name>Java.net Maven 1 Repository (legacy)</name>
+            <url>http://download.java.net/maven/1</url>
+            <layout>legacy</layout>
+        </pluginRepository>
+    </pluginRepositories>-->
 
-	<dependencies>
-		<dependency>
-			<groupId>org.geotools.xsd</groupId>
-			<artifactId>gt-xsd-core</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.geotools.xsd</groupId>
+            <artifactId>gt-xsd-core</artifactId>
 			<version>9-SNAPSHOT</version>
-		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>org.geotools.xsd</groupId> -->
-		<!-- <artifactId>gt-xsd-wcs</artifactId> -->
-		<!-- <version>9-SNAPSHOT</version> -->
-		<!-- </dependency> -->
-		<dependency>
-			<groupId>org.geotools.xsd</groupId>
-			<artifactId>gt-xsd-ows</artifactId>
+        </dependency>
+        <!-- <dependency> -->
+        <!-- <groupId>org.geotools.xsd</groupId> -->
+        <!-- <artifactId>gt-xsd-wcs</artifactId> -->
+        <!-- <version>9-SNAPSHOT</version> -->
+        <!-- </dependency> -->
+        <dependency>
+            <groupId>org.geotools.xsd</groupId>
+            <artifactId>gt-xsd-ows</artifactId>
 			<version>9-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>org.geotools.xsd</groupId>
-			<artifactId>gt-xsd-gml3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.geotools.xsd</groupId>
+            <artifactId>gt-xsd-gml3</artifactId>
 			<version>9-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>org.geotools.ogc</groupId>
-			<artifactId>net.opengis.wcs</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.geotools.ogc</groupId>
+            <artifactId>net.opengis.wcs</artifactId>
 			<version>9-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
 			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.geotools.maven</groupId>
-				<artifactId>xmlcodegen</artifactId>
-				<version>9-SNAPSHOT</version>
-				<configuration>
-					<schemaLocation>wcsAll.xsd</schemaLocation>
-					<schemaSourceDirectory>${basedir}/src/main/resources</schemaSourceDirectory>
-					<destinationPackage>org.geotools.wcs.bindings</destinationPackage>
-					<generateConfiguration>true</generateConfiguration>
-					<generateBindingInterface>true</generateBindingInterface>
-					<generateSchemaLocationResolver>true</generateSchemaLocationResolver>
-					<bindingConstructorArguments>
-						<bindingConstructorArgument>
-							<name>factory</name>
-							<type>net.opengis.wcs11.Wcs111Factory</type>
-						</bindingConstructorArgument>
-					</bindingConstructorArguments>
-				</configuration>
-			</plugin>
-			<plugin>
-				<inherited>true</inherited>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-				</configuration>
-			</plugin>
-			<!-- <plugin> -->
-			<!-- <groupId>org.jvnet.jaxb2.maven2</groupId> -->
-			<!-- <artifactId>maven-jaxb2-plugin</artifactId> -->
-			<!-- <configuration> -->
-			<!-- <packageName>org.geotools.po</packageName> -->
-			<!-- <generateDirectory>${project.build.sourceDirectory}</generateDirectory> -->
-			<!-- </configuration> -->
-			<!-- </plugin> -->
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+<!--            <plugin>
+                <groupId>org.geotools.maven</groupId>
+                <artifactId>xmlcodegen</artifactId>
+                <version>9-SNAPSHOT</version>
+                <configuration>
+                    <schemaLocation>wcsAll.xsd</schemaLocation>
+                    <schemaSourceDirectory>${basedir}/src/main/resources</schemaSourceDirectory>
+                    <destinationPackage>org.geotools.wcs.bindings</destinationPackage>
+                    <generateConfiguration>true</generateConfiguration>
+                    <generateBindingInterface>true</generateBindingInterface>
+                    <generateSchemaLocationResolver>true</generateSchemaLocationResolver>
+                    <bindingConstructorArguments>
+                        <bindingConstructorArgument>
+                            <name>factory</name>
+                            <type>net.opengis.wcs11.Wcs111Factory</type>
+                        </bindingConstructorArgument>
+                    </bindingConstructorArguments>
+                </configuration>
+            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>  <!-- The -source argument for the Java compiler. -->
+                    <target>1.5</target>  <!-- The -target argument for the Java compiler. -->
+                    <debug>true</debug>   <!-- Whether to include debugging information.   -->
+                    <encoding>UTF-8</encoding> <!-- The -encoding argument for the Java compiler. -->
+                </configuration>
+            </plugin>
+
+            <!-- <plugin> -->
+            <!-- <groupId>org.jvnet.jaxb2.maven2</groupId> -->
+            <!-- <artifactId>maven-jaxb2-plugin</artifactId> -->
+            <!-- <configuration> -->
+            <!-- <packageName>org.geotools.po</packageName> -->
+            <!-- <generateDirectory>${project.build.sourceDirectory}</generateDirectory> -->
+            <!-- </configuration> -->
+            <!-- </plugin> -->
+            
+<!--            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.4.3</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>-->
+        </plugins>
+    </build>
 </project>
