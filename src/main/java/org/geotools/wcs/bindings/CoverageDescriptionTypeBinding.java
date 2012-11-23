@@ -1,12 +1,15 @@
 package org.geotools.wcs.bindings;
 
 
+import java.net.URI;
 import org.geotools.wcs.WCS;
 import org.geotools.xml.*;
 
 import net.opengis.wcs11.Wcs111Factory;		
 
 import javax.xml.namespace.QName;
+import net.opengis.wcs11.CoverageDescriptionType;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * Binding object for the type http://www.opengis.net/wcs/1.1.1:CoverageDescriptionType.
@@ -54,12 +57,10 @@ import javax.xml.namespace.QName;
  *
  * @generated
  */
-public class CoverageDescriptionTypeBinding extends AbstractComplexBinding {
+public class CoverageDescriptionTypeBinding extends AbstractComplexEMFBinding {
 
-	Wcs111Factory factory;		
 	public CoverageDescriptionTypeBinding( Wcs111Factory factory ) {
-		super();
-		this.factory = factory;
+		super(factory);
 	}
 
 	/**
@@ -76,20 +77,28 @@ public class CoverageDescriptionTypeBinding extends AbstractComplexBinding {
 	 * @generated modifiable
 	 */	
 	public Class getType() {
-		return null;
+		return CoverageDescriptionType.class;
 	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 *	
-	 * @generated modifiable
-	 */	
-	public Object parse(ElementInstance instance, Node node, Object value) 
-		throws Exception {
-		
-		//TODO: implement and remove call to super
-		return super.parse(instance,node,value);
-	}
+//	/**
+//	 * <!-- begin-user-doc -->
+//	 * <!-- end-user-doc -->
+//	 *	
+//	 * @generated modifiable
+//	 */	
+//	public Object parse(ElementInstance instance, Node node, Object value) 
+//		throws Exception {
+//		
+//		//TODO: implement and remove call to super
+//		return super.parse(instance,node,value);
+//	}
+
+    @Override
+    protected void setProperty(EObject eObject, String property, Object value, boolean lax) {
+        if (value instanceof URI) {
+            value = ((URI) value).toString();
+        }
+        super.setProperty(eObject, property, value, lax);
+    }
 
 }

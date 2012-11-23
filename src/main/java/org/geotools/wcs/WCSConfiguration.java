@@ -4,6 +4,7 @@ import java.util.Map;
 import javax.xml.namespace.QName;
 import net.opengis.ows11.Ows11Factory;
 import net.opengis.ows11.WGS84BoundingBoxType;
+import net.opengis.wcs11.AvailableKeysType;
 import net.opengis.wcs11.CapabilitiesType;
 import net.opengis.wcs11.ContentsType;
 import net.opengis.wcs11.CoverageSummaryType;
@@ -14,6 +15,7 @@ import org.geotools.ows.bindings.BoundingBoxTypeBinding;
 import org.geotools.ows.bindings.WGS84BoundingBoxTypeBinding;
 import org.geotools.ows.v1_1.OWS;
 import org.geotools.ows.v1_1.OWSConfiguration;
+import org.geotools.wcs.bindings.CoverageDescriptionTypeBinding;
 import org.geotools.wcs.bindings._ContentsBinding;
 import org.geotools.xml.ComplexEMFBinding;
 import org.geotools.xml.Configuration;
@@ -51,6 +53,19 @@ public class WCSConfiguration extends Configuration {
         register(bindings, wcsFactory, WCS._Capabilities, CapabilitiesType.class);
         bindings.put(WCS._Contents, new _ContentsBinding(wcsFactory));
         register(bindings, wcsFactory, WCS.CoverageSummaryType);
+        
+        register(bindings, wcsFactory, WCS.CoverageDescriptionType);
+        register(bindings, wcsFactory, WCS.CoverageDomainType);
+        register(bindings, wcsFactory, WCS.SpatialDomainType);
+        register(bindings, wcsFactory, WCS.RangeType);
+        register(bindings, wcsFactory, WCS.FieldType);
+        register(bindings, wcsFactory, WCS._InterpolationMethods);
+        register(bindings, wcsFactory, WCS.InterpolationMethodType);
+        bindings.put(WCS.CoverageDescriptionType, new CoverageDescriptionTypeBinding(wcsFactory));
+        register(bindings, wcsFactory, WCS.GridCrsType);
+        register(bindings, wcsFactory, WCS.TimeSequenceType);
+        register(bindings, wcsFactory, WCS.AxisType);
+        register(bindings, wcsFactory, WCS.AvailableKeys, AvailableKeysType.class);
     }
 
     private void register(Map bindings, EFactory factory, QName qname) {
