@@ -51,9 +51,6 @@ public class WCSConfiguration extends Configuration {
         register(bindings, wcsFactory, WCS._Capabilities, CapabilitiesType.class);
         bindings.put(WCS._Contents, new _ContentsBinding(wcsFactory));
         register(bindings, wcsFactory, WCS.CoverageSummaryType);
-        
-        // TODO: move to OWS config
-        bindings.put(OWS.WGS84BoundingBoxType, new ComplexEMFBinding(Ows11Factory.eINSTANCE, OWS.WGS84BoundingBoxType, WGS84BoundingBoxType.class));
     }
 
     private void register(Map bindings, EFactory factory, QName qname) {
