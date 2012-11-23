@@ -1,6 +1,7 @@
 package org.geotools.wcs.bindings;
 
 
+import java.net.URI;
 import org.geotools.wcs.WCS;
 import org.geotools.xml.*;
 
@@ -9,6 +10,7 @@ import net.opengis.wcs11.Wcs111Factory;
 import javax.xml.namespace.QName;
 import net.opengis.wcs11.ContentsType;
 import net.opengis.wcs11.impl.ContentsTypeImpl;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * Binding object for the type http://www.opengis.net/wcs/1.1.1:_Contents.
@@ -48,12 +50,10 @@ import net.opengis.wcs11.impl.ContentsTypeImpl;
  *
  * @generated
  */
-public class _ContentsBinding extends AbstractComplexBinding {
+public class _ContentsBinding extends AbstractComplexEMFBinding {
 
-	Wcs111Factory factory;		
 	public _ContentsBinding( Wcs111Factory factory ) {
-		super();
-		this.factory = factory;
+		super(factory);
 	}
 
 	/**
@@ -72,19 +72,13 @@ public class _ContentsBinding extends AbstractComplexBinding {
 	public Class getType() {
 		return ContentsType.class;
 	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 *	
-	 * @generated modifiable
-	 */	
-	public Object parse(ElementInstance instance, Node node, Object value) 
-		throws Exception {
-            
-            ContentsType contents = this.factory.createContentsType();
-		
-            return contents;
-	}
+
+    @Override
+    protected void setProperty(EObject eObject, String property, Object value, boolean lax) {
+        if (value instanceof URI) {
+            value = ((URI) value).toString();
+        }
+        super.setProperty(eObject, property, value, lax);
+    }
 
 }

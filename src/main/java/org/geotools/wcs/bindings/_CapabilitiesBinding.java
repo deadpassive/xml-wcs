@@ -63,11 +63,9 @@ public class _CapabilitiesBinding extends AbstractComplexBinding {
 	 */	
 	public Object parse(ElementInstance instance, Node node, Object value) 
 		throws Exception {
-		
-		return "Capabilities!";
-		
+				
 		//TODO: implement and remove call to super
-//		return super.parse(instance,node,value);
+		return super.parse(instance,node,value);
 	}
 
 }

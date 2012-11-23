@@ -12,7 +12,7 @@ import org.xml.sax.SAXException;
 public class WCSTest extends TestCase {
 
     public void testWCS() throws IOException, SAXException, ParserConfigurationException {
-        InputStream input = getClass().getResourceAsStream("exampleCapabilities2.xml");
+        InputStream input = getClass().getResourceAsStream("capabilities.xml");
         Configuration configuration = new WCSConfiguration();
 
         Parser parser = new Parser(configuration);
